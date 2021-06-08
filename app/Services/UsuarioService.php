@@ -15,6 +15,9 @@ class UsuarioService
             $usuario = new Usuario($dados);
             $usuario->save();
 
+            $contaService = new ContaService();
+            $contaService->criar($usuario);
+
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
